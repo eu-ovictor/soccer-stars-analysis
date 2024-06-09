@@ -60,7 +60,7 @@ async def fetch_overall_attendances(session, competition_content):
 
         for a in table.find_all("a", href=lambda href: href and "teams" in href):
             if not a.find("img"):
-                team = a.text
+                team = a["href"].split("/")[2]
 
                 stats = a.find_parent().find_next_siblings("td", limit=3)
 
